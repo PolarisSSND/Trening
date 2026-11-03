@@ -10,8 +10,6 @@ import {
   Bell,
   Plus,
   Trash2,
-  Calendar,
-  Sparkles,
   Share2,
   Check,
 } from 'lucide-react';
@@ -142,24 +140,24 @@ export default function AnnouncementsPage() {
   return (
     <div className="space-y-5 animate-fade-in">
       {/* Header card */}
-      <div className="bg-slate-800/90 border border-slate-700 rounded-3xl p-5 sm:p-6 shadow-xl">
+      <div className="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-3xl p-5 sm:p-6 shadow-md">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 px-3 py-1 rounded-xl">
               Tímová Nástenka
             </span>
-            <h1 className="text-2xl sm:text-3xl font-black text-white mt-2">
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2">
               Oznamy & Upozornenia
             </h1>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-md">
-              Oficiálne správy, organizačné zmeny a dôležité notifikácie od trénera pre celý klub.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-md">
+              Oficiálne správy, organizačné zmeny a dôležité notifikácie od trénera pre všetkých členov klubu.
             </p>
           </div>
 
           {isTrener && (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white font-bold text-sm px-4 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 transition-all hover:scale-[1.02] shrink-0"
+              className="bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-bold text-sm px-4 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] shrink-0"
             >
               <Plus className="w-5 h-5 stroke-[2.5]" />
               Nové upozornenie
@@ -172,15 +170,15 @@ export default function AnnouncementsPage() {
       {loading ? (
         <div className="py-16 text-center">
           <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-xs text-slate-400 mt-2">Načítavam oznamy tímu...</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Načítavam oznamy tímu...</p>
         </div>
       ) : announcements.length === 0 ? (
-        <div className="bg-slate-800/40 border border-dashed border-slate-700 rounded-3xl p-10 text-center space-y-3">
-          <div className="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center text-slate-400 mx-auto">
+        <div className="bg-white dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700 rounded-3xl p-10 text-center space-y-3 shadow-sm">
+          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 mx-auto">
             <Bell className="w-6 h-6" />
           </div>
-          <h3 className="text-base font-bold text-white">Žiadne aktuálne oznamy</h3>
-          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+          <h3 className="text-base font-bold text-slate-900 dark:text-white">Žiadne aktuálne oznamy</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
             Všetky dôležité informácie od trénera sa zobrazia na tejto nástenke.
           </p>
         </div>
@@ -198,16 +196,16 @@ export default function AnnouncementsPage() {
             return (
               <div
                 key={ann.id}
-                className="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 sm:p-5 shadow-sm hover:border-slate-600 transition-colors"
+                className="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 sm:p-5 shadow-sm hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400 flex items-center justify-center shrink-0">
                       <Bell className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-base text-white">{ann.title}</h3>
-                      <span className="text-[11px] text-slate-400">
+                      <h3 className="font-bold text-base text-slate-900 dark:text-white">{ann.title}</h3>
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400">
                         {ann.author_name || 'Tréner'} • {formattedDate}
                       </span>
                     </div>
@@ -216,11 +214,11 @@ export default function AnnouncementsPage() {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handleShare(ann)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700/60 transition-colors"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/60 transition-colors"
                       title="Zdieľať oznam"
                     >
                       {copiedId === ann.id ? (
-                        <Check className="w-4 h-4 text-emerald-400" />
+                        <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                       ) : (
                         <Share2 className="w-4 h-4" />
                       )}
@@ -229,7 +227,7 @@ export default function AnnouncementsPage() {
                     {isTrener && (
                       <button
                         onClick={() => handleDeleteAnnouncement(ann.id)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-slate-700/60 transition-colors"
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-slate-100 dark:hover:bg-slate-700/60 transition-colors"
                         title="Odstrániť oznam"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -238,7 +236,7 @@ export default function AnnouncementsPage() {
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap pl-10 mt-1">
+                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap pl-10 mt-1">
                   {ann.content}
                 </p>
               </div>

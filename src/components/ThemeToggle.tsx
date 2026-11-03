@@ -9,11 +9,13 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
+    // Zistenie aktuálneho motívu
     const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial = saved || (prefersDark ? 'dark' : 'light');
-    setTheme(initial);
-    if (initial === 'dark') {
+    const isDark = saved ? saved === 'dark' : document.documentElement.classList.contains('dark') || window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = isDark ? 'dark' : 'light';
+    
+    setTheme(currentTheme);
+    if (currentTheme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
@@ -21,10 +23,11 @@ export default function ThemeToggle() {
   }, []);
 
   const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    localStorage.setItem('theme', next);
-    if (next === 'dark') {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
+
+    if (nextTheme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
@@ -39,14 +42,14 @@ export default function ThemeToggle() {
     <button
       onClick={toggleTheme}
       type="button"
-      className="p-2 rounded-xl text-slate-400 hover:text-slate-100 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+      className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 border border-slate-300 dark:border-slate-700/60 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
       aria-label="Prepnúť tmavý / svetlý režim"
       title={theme === 'dark' ? 'Prepnúť na svetlý režim' : 'Prepnúť na tmavý režim'}
     >
       {theme === 'dark' ? (
         <Sun className="w-5 h-5 text-amber-400" />
       ) : (
-        <Moon className="w-5 h-5 text-slate-300" />
+        <Moon className="w-5 h-5 text-slate-700" />
       )}
     </button>
   );

@@ -8,7 +8,7 @@ import PwaInstallPrompt from '@/components/PwaInstallPrompt';
 
 export const metadata: Metadata = {
   title: 'Športový Tím - Dochádzka & Tréningy',
-  description: 'Progresívna webová aplikácia (PWA) pre športové tímy a kluby na správu tréningov a evidenciu dochádzky hráčov.',
+  description: 'Progresívna webová aplikácia (PWA) pre športové tímy a kluby na správu tréningov a evidenciu dochádzky členov.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -36,14 +36,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sk" className="dark">
+    <html lang="sk" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="TímDochádzka" />
         <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+        {/* Okamžité nastavenie Dark/Light režimu pred vykreslením stránky */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var savedTheme = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
       </head>
-      <body className="bg-slate-900 text-slate-100 flex flex-col min-h-screen selection:bg-emerald-500 selection:text-white">
+      <body className="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen selection:bg-emerald-500 selection:text-white transition-colors duration-150">
         <AuthProvider>
           <PwaRegister />
           <Header />

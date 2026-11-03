@@ -211,9 +211,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(coach);
       localStorage.setItem('demo_user_id', coach.id);
     } else {
-      const player = MOCK_PROFILES.find((p) => p.role === 'clen') || MOCK_PROFILES[1];
-      setUser(player);
-      localStorage.setItem('demo_user_id', player.id);
+      const member = MOCK_PROFILES.find((p) => p.role === 'clen') || MOCK_PROFILES[1];
+      setUser(member);
+      localStorage.setItem('demo_user_id', member.id);
     }
   };
 

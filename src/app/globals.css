@@ -3,19 +3,17 @@
 @tailwind utilities;
 
 :root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+html.dark {
   --background: #0f172a;
   --foreground: #f8fafc;
 }
 
 html {
-  color-scheme: dark;
   -webkit-tap-highlight-color: transparent;
-}
-
-html.light {
-  color-scheme: light;
-  --background: #f8fafc;
-  --foreground: #0f172a;
 }
 
 body {
@@ -44,12 +42,16 @@ body, header, nav, div, button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #94a3b8;
   border-radius: 9999px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #64748b;
 }
 
 /* Animácie pre modaly a karty */
