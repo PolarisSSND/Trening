@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <linearGradient id="bg512" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#10b981" />
-      <stop offset="100%" stop-color="#047857" />
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="accent512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#f97316" />
     </linearGradient>
     <filter id="shadow512" x="-10%" y="-10%" width="120%" height="120%">
       <feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity="0.35"/>
     </filter>
   </defs>
-  <!-- Background with rounded corners -->
   <rect width="512" height="512" rx="112" fill="url(#bg512)" />
-  
-  <!-- Sport / Attendance Emblem -->
   <g transform="translate(96, 96)" filter="url(#shadow512)">
-    <!-- Shield / Trophy outline -->
-    <path d="M160 20 C240 20, 300 48, 300 48 C300 186, 208 266, 160 300 C112 266, 20 186, 20 48 C20 48, 80 20, 160 20 Z" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/>
-    <!-- Checkmark inside -->
-    <path d="M100 150 L140 190 L224 104" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Top sports accent star -->
-    <circle cx="160" cy="64" r="9" fill="#ffffff" />
+    <!-- Stylized "A" apex -->
+    <path d="M160 20 L300 300 L240 300 L258 192 L70 192 L52 300 L8 300 Z" fill="#ffffff"/>
+    <!-- Accent bar cut-out giving the A a modern look -->
+    <rect x="94" y="156" width="140" height="28" rx="14" fill="url(#accent512)"/>
+    <circle cx="160" cy="64" r="12" fill="url(#accent512)"/>
   </g>
 </svg>

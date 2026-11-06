@@ -7,13 +7,13 @@ import PwaRegister from '@/components/PwaRegister';
 import PwaInstallPrompt from '@/components/PwaInstallPrompt';
 
 export const metadata: Metadata = {
-  title: 'Športový Tím - Dochádzka & Tréningy',
+  title: 'Aforce - Dochádzka & Tréningy',
   description: 'Progresívna webová aplikácia (PWA) pre športové tímy a kluby na správu tréningov a evidenciu dochádzky členov.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'TímDochádzka',
+    title: 'Aforce',
   },
   icons: {
     icon: '/icons/icon-192.svg',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#10b981',
+  themeColor: '#0ea5e9',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
